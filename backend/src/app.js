@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const session = require('express-session');
+const cors = require('cors');
 
 class App {
   constructor({ port }) {
@@ -21,6 +22,11 @@ class App {
   initializeRouter = () => {};
   initializeMiddleware = () => {
     this.app.use(express.json());
+    this.app.use(
+      cors({
+        origin: process.env.CORS_ORIGIN
+      })
+    );
     this.app.use(
       session({
         secret: process.env.SESSION_SECRET ?? '',
