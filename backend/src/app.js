@@ -19,7 +19,11 @@ class App {
       () => void console.log(`Server started on port ${this.port}...`)
     );
 
-  initializeRouter = () => {};
+  initializeRouter = () => {
+    this.app.use('/api/signal', require('./api/signalGame'));
+    this.app.use('/', express.static('src/frontend'));
+  };
+
   initializeMiddleware = () => {
     this.app.use(express.json());
     this.app.use(
