@@ -5,7 +5,7 @@ const cors = require('cors');
 
 class App {
   constructor({ port }) {
-    this.port = port && 3000;
+    this.port = port ?? 3000;
     this.app = express();
     this.server = http.createServer(this.app);
 
